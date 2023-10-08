@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.thymeleaf.org" th:replace="base::Layout(~{::section})">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+
+</head>
+
+<body>
+
+	<section class="vh-100" style="background-color: #9A616D;">
+		<div class="container py-5 h-50">
+			<div class="row d-flex justify-content-center align-items-center h-50">
+				<div class="col col-xl-10">
+					<div class="card" style="border-radius: 1rem;">
+						<div class="row g-0">
+
+							<div class="col-lg-12 d-flex align-items-center">
+								<div class="card-body p-4  text-black">
+
+									<h3 class="text-center m-3">Your Registered Email</h3>
+
+									<div class="alert alert-success" role="alert">
+										OTP sent to your email
+									</div>
+									
+									<!--messgae box-->
+									<div th:if="${session.message}" class="container">
+										<div class="alert alert-danger my-2 text-center" role="alert">
+											<span th:text="${session.message}"></span>
+										</div>
+
+										<th:block th:text="${#session.removeAttribute('message')}"></th:block>
+
+									</div>
+
+
+									<form action="" th:action="@{/verify-otp}" method="post">
+
+										<div class="form-group">
+
+											<input required name="otp" type="text" placeholder="Enter otp here"
+												class="form-control" />
+
+										</div>
+
+										<div class="container text-center">
+
+											<button class="btn btn-warning mt-3">Verify</button>
+
+										</div>
+
+									</form>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+</body>
+
+</html>
